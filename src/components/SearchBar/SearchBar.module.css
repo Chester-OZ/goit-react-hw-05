@@ -1,0 +1,41 @@
+.searchForm {
+  padding: 0 20px;
+  max-width: 640px;
+  margin: 70px auto -30px;
+  position: relative;
+}
+
+.searchForm input {
+  box-shadow: -1px 11px 17px -3px rgba(0, 0, 0, 0.082);
+  width: 100%;
+  outline: none;
+  margin: 0 auto;
+  font-size: 18px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  transition: border 0.2s ease;
+  color: rgb(198, 198, 198);
+  border: 1px solid rgb(212, 212, 212);
+}
+
+.searchForm input::placeholder {
+  font-size: 20px;
+  font-family: Montserrat;
+  letter-spacing: 0.02em;
+  color: rgb(212, 212, 212);
+}
+
+.searchForm button {
+  position: absolute;
+  top: 0;
+  right: 30px;
+  padding: 12px 0;
+  background-color: transparent;
+  color: rgb(212, 212, 212);
+  transition: color 0.5s ease, scale 0.2s ease;
+  border: none;
+}
+
+.searchForm button:hover {
+  scale: 1.2;
+}

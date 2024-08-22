@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const token = import.meta.env.VITE_TMDB_TOKEN
 axios.defaults.baseURL = 'https://api.themoviedb.org/3'
-axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+axios.defaults.headers.common = { Authorization: `Bearer ${token}` }
 
 const trendingURL = '/trending/movie/day'
 const detailsURL = '/movie'

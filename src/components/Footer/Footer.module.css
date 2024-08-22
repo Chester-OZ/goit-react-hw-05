@@ -1,0 +1,17 @@
+.footer {
+  padding: 20px;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.link {
+  color: rgb(59, 29, 62) 23%;
+  font-weight: 500;
+  padding: 0 3px;
+}
+
+.link:hover {
+  color: #494d9e;
+}

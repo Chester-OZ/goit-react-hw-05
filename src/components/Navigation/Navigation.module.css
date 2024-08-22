@@ -1,0 +1,27 @@
+.navigation {
+  border-bottom: 1px solid #d3d3d3;
+  background: rgb(59, 29, 62) 23%;
+  color: #fafafa;
+  box-shadow: -1px 11px 17px -3px rgba(0, 0, 0, 0.069);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  z-index: 999;
+  padding: 16px 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.link {
+  font-size: 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.link:hover {
+  font-weight: 700;
+}

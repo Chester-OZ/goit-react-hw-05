@@ -1,0 +1,14 @@
+.loadMoreBtn {
+  margin: 0 auto 30px;
+  width: 130px;
+  padding: 8px 10px;
+  color: rgb(230, 230, 230);
+  background: #5a5fb5;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.loadMoreBtn:hover {
+  background: #494d9e;
+}
