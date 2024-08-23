@@ -39,11 +39,11 @@ export default function MovieReviews() {
 
   return (
     <div className={css.reviews}>
-      <ul className={css.reviewsList}>
+      <ul className={css.list}>
         {reviews.map((review) => (
-          <li key={review.id} className={css.reviewItem}>
-            <h3 className={css.reviewAuthor}>{review.author}</h3>
-            <p className={css.reviewContent}>{review.content}</p>
+          <li key={review.id} className={css.item}>
+            <h3 className={css.author}>{review.author}</h3>
+            <p className={css.content}>{review.content}</p>
             <div className={css.line}></div>
           </li>
         ))}

@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react'
-
+import { getTrendingMovies } from '../../api/tmdb'
 import Loader from 'components/Loader/Loader'
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage'
 import MovieList from 'components/MovieList/MovieList'
 import LoadMoreBtn from 'components/LoadMoreBtn/LoadMoreBtn'
-
-import { getTrendingMovies } from '../../api/tmdb'
 
 export default function HomePage() {
   const [trendingMovies, setTrendingMovies] = useState([])
@@ -13,8 +11,6 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(null)
   const [page, setPage] = useState(1)
-
-  const handleLoadMore = () => setPage((prev) => prev + 1)
 
   useEffect(() => {
     const fetchTrendingMovies = async () => {
@@ -34,6 +30,8 @@ export default function HomePage() {
 
     fetchTrendingMovies()
   }, [page])
+
+  const handleLoadMore = () => setPage((prev) => prev + 1)
 
   return (
     <div>

@@ -1,10 +1,10 @@
-import css from './MovieCast.module.css'
 import ErrorMessage from '../ErrorMessage/ErrorMessage'
 import LoadMoreBtn from '../LoadMoreBtn/LoadMoreBtn'
 import Loader from '../Loader/Loader'
+import CastList from '../CastList/CastList'
 import { useEffect, useState, useRef } from 'react'
 import { useParams } from 'react-router-dom'
-import { getMovieCredits, placeholderURL, posterURL } from '../../api/tmdb'
+import { getMovieCredits } from '../../api/tmdb'
 
 export default function MovieCast() {
   const { movieId } = useParams()
@@ -41,42 +41,27 @@ export default function MovieCast() {
     }
   }, [movieId])
 
-  if (isError) {
-    return <ErrorMessage>Please, reload the page</ErrorMessage>
-  }
-
-  if (!isLoading && movieCredits.length === 0) {
-    return <ErrorMessage>No cast information found...</ErrorMessage>
-  }
+  const loadMoreButton = visibleCount < movieCredits.length && (
+    <LoadMoreBtn onClick={handleLoadMore}>Load more</LoadMoreBtn>
+  )
 
   return (
     <>
       <Loader isLoading={isLoading} />
-      <ul className={css.creditsList}>
-        {movieCredits
-          .slice(0, visibleCount)
-          .map(({ profile_path, name, character, cast_id }, index) => {
-            const profileImgSrc = profile_path
-              ? `${posterURL}${profile_path}`
-              : placeholderURL
-            return (
-              <li key={cast_id} ref={index === 0 ? firstCastRef : undefined}>
-                <div>
-                  <img src={profileImgSrc} alt={`${name} as ${character}`} />
-                </div>
-                <div className={css.actorDescription}>
-                  <p className={css.actorName}>{name}</p>
-                  <p>{character}</p>
-                </div>
-              </li>
-            )
-          })}
-      </ul>
-      <div className={css.loadMoreWrapper} ref={loadMoreRef}>
-        {visibleCount < movieCredits.length && (
-          <LoadMoreBtn onClick={handleLoadMore}>Load more</LoadMoreBtn>
-        )}
-      </div>
+      {isError ? (
+        <ErrorMessage>Please, reload the page</ErrorMessage>
+      ) : !isLoading && movieCredits.length === 0 ? (
+        <ErrorMessage>No cast information found</ErrorMessage>
+      ) : (
+        <>
+          <CastList
+            movieCredits={movieCredits}
+            visibleCount={visibleCount}
+            firstCastRef={firstCastRef}
+          />
+          <div ref={loadMoreRef}>{loadMoreButton}</div>
+        </>
+      )}
     </>
   )
 }
